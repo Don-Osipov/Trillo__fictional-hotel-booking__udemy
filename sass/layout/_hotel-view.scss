@@ -1,0 +1,45 @@
+.hotel-view {
+    background-color: #fff;
+    flex: 1; // Should grow as much as it can
+}
+
+.detail {
+    display: flex;
+    padding: 4.5rem;
+    background-color: var(--color-grey-light-1);
+    border-bottom: var(--line);
+    font-size: 1.4rem;
+    flex-wrap: wrap;
+
+    @include respond(bp-medium) {
+        padding: 3rem;
+    }
+    @include respond(bp-small) {
+        flex-direction: column;
+    }
+}
+
+.description {
+    font-size: 1.4rem;
+    background-color: #fff;
+    box-shadow: var(--shadow-light);
+    padding: 3rem;
+    flex: 0 0 60%; // 60% is flex-basis (width)
+    margin-right: 4.5rem;
+
+    @include respond(bp-medium) {
+        padding: 2rem;
+        margin-right: 3rem;
+    }
+    @include respond(bp-small) {
+        margin-right: 0;
+        margin-bottom: 3rem;
+    }
+}
+
+.user-reviews {
+    flex: 1; //occupy remaining space
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

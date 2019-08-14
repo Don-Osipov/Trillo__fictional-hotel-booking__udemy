@@ -1,0 +1,7 @@
+.gallery {
+    display: flex; //makes them side by side
+    &__photo {
+        width: 100%; // makes them completely touching
+        display: block; //to keep a small black white space below image away
+    }
+}

@@ -1,0 +1,100 @@
+.navigation {
+    background-color: var(--color-grey-dark-1);
+
+    flex: 0 0 18%; // Flex-grow, Flex-shrink, Flex-bases... Flex-basis is like width... Since its a % shrink is not necessary
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.side-nav {
+    font-size: 1.4rem;
+    list-style: none;
+    margin-top: 3.5rem;
+
+    @include respond(bp-medium) {
+        display: flex;
+        margin: 0;
+    }
+
+    &__item {
+        position: relative;
+
+        &:not(:last-child) {
+            margin-bottom: 0.5rem;
+        }
+
+        @include respond(bp-medium) {
+            flex: 1;
+        }
+    }
+
+    &__item::before {
+        content: "";
+        position: absolute; // Parent element of a psuedo element is the non psuedo element
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 3px;
+        background-color: var(--color-primary);
+        transform: scaleY(0);
+        transition: transform 0.2s, width 0.4s 0.2s cubic-bezier(1, 0, 0, 1), background-color 0.1s; // DIFFERENT SETTINGS DIFFERENT PROPERTIES -- Adds a delay to the width expansion
+    }
+
+    &__item:hover::before,
+    &__item--active::before {
+        transform: scaleY(1); // Makes it start in the middle and then grow to the sides
+        width: 100%;
+    }
+
+    &__item:active::before {
+        background-color: var(--color-primary-light);
+    }
+
+    &__link:link,
+    &__link:visited {
+        color: var(--color-grey-light-1);
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 1.5rem 3rem;
+        position: relative; // Z-index only works if pos is selected
+        z-index: 10;
+
+        display: flex;
+        align-items: center;
+
+        @include respond(bp-medium) {
+            justify-content: center;
+            padding: 2rem;
+        }
+        @include respond(bp-small) {
+            padding: 1.5rem;
+            flex-direction: column;
+        }
+    }
+
+    &__icon {
+        width: 1.75rem;
+        height: 1.75rem;
+        margin-right: 2rem;
+        fill: currentColor; //COLOR OF PARENT ELEMENT
+
+        @include respond(bp-small) {
+            margin-right: 0;
+            margin-bottom: 7px;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+}
+
+.legal {
+    font-size: 1.2rem;
+    color: var(--color-grey-light-4);
+    text-align: center;
+    padding: 2.5rem;
+
+    @include respond(bp-medium) {
+        display: none;
+    }
+}

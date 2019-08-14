@@ -1,0 +1,77 @@
+.overview {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: var(--line);
+
+    &__heading {
+        font-size: 2.25rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 1.5rem 3rem;
+
+        @include respond(bp-small) {
+            font-size: 1.8rem;
+            padding: 1.25rem 2rem;
+        }
+    }
+
+    &__stars {
+        margin-right: auto; // Better than flex: 1 -- bc the element will go the the right but wont grow to the whole width
+        display: flex; //  ! Fixes a bug where the stars would have a slight bottom space bc they (svgs) act like inline/text
+    }
+
+    &__icon-star,
+    &__icon-location {
+        width: 1.75rem; // svgs should be square
+        height: 1.75rem;
+        fill: var(--color-primary);
+    }
+
+    &__icon-location {
+        margin-right: 0.5rem;
+    }
+
+    &__location {
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+    }
+
+    &__rating {
+        background-color: var(--color-primary);
+        color: #fff;
+        margin-left: 3rem;
+        align-self: stretch; // ! to make them stretch to the top
+        padding: 0 2.5rem;
+
+        display: flex;
+        align-items: center; // Centers them vertically and horizontally
+        justify-content: center;
+        flex-direction: column; // Makes them go back on top of eachother
+
+        @include respond(bp-small) {
+            padding: 0 1.5rem;
+        }
+    }
+
+    &__rating-average {
+        font-size: 2.25rem;
+        font-weight: 300;
+        margin-bottom: -3px; // decreases space between them
+
+        @include respond(bp-small) {
+            font-size: 1.8rem;
+        }
+    }
+
+    &__rating-count {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+
+        @include respond(bp-small) {
+            font-size: 0.5rem;
+        }
+    }
+}
